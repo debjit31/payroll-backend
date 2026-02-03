@@ -1,0 +1,19 @@
+spring:
+  application:
+    name: NRI-FINTECH Payroll
+    server:
+      port: 8080
+  datasource:
+    url: jdbc:postgresql://localhost:5432/payroll_db
+    username: postgres
+    password: root
+    driver-class-name: org.postgresql.Driver
+    initialization-mode: always
+
+  jpa:
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+    hibernate:
+      ddl-auto: update
+    show-sql: false
