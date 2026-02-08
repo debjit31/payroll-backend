@@ -15,13 +15,20 @@ public class Organization extends BaseEntity {
 
     @Id
     @GeneratedValue
+    @Column(columnDefinition = "UUID")
     private UUID id;
 
+    @Column(nullable = false, length = 255)
     private String name;
+
+    @Column(nullable = false, length = 50)
     private String country;
+
+    @Column(nullable = false, length = 10)
     private String currency;
 
-//    @Enumerated(EnumType.STRING)
-//    private PayrollFrequency payrollFrequency;
+    @Enumerated(EnumType.STRING)
+    @Column(name = "payroll_frequency", nullable = false, length = 20)
+    private PayrollFrequency payrollFrequency;
 }
 
