@@ -23,7 +23,7 @@ spring:
 # JWT Configuration
 jwt:
   secret: dGhpc2lzYXZlcnlzdHJvbmdzZWNyZXRrZXl0aGF0c2hvdWxkYmVjaGFuZ2VkaW5wcm9kdWN0aW9uYW5ka2VwdHNlY3VyZWx5aW5lbnZpcm9ubWVudHZhcmlhYmxlcw==
-  expiration-ms: 1800000  # 3 minutes in milliseconds
+  expiration-ms: 1800000  # 30 minutes in milliseconds
 
 logging:
   level:
