@@ -19,6 +19,12 @@ spring:
     show-sql: false
   flyway:
     enabled: true
+
+# JWT Configuration
+jwt:
+  secret: dGhpc2lzYXZlcnlzdHJvbmdzZWNyZXRrZXl0aGF0c2hvdWxkYmVjaGFuZ2VkaW5wcm9kdWN0aW9uYW5ka2VwdHNlY3VyZWx5aW5lbnZpcm9ubWVudHZhcmlhYmxlcw==
+  expiration-ms: 180000  # 3 minutes in milliseconds
+
 logging:
   level:
     org.flywaydb: DEBUG
