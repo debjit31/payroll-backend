@@ -1,5 +1,6 @@
 package com.example.payroll_backend.auth.api;
 
+import com.example.payroll_backend.auth.domain.Role;
 import com.example.payroll_backend.auth.dto.UserRegistrationRequest;
 import com.example.payroll_backend.auth.dto.UserRegistrationResponse;
 import com.example.payroll_backend.auth.service.UserRegistrationService;
@@ -10,6 +11,7 @@ import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.extern.slf4j.Slf4j;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -48,7 +50,8 @@ public class UserRegistrationController {
                 return ResponseEntity.badRequest().body("Role is required");
             }
 
-            if (request.getOrganizationId() == null) {
+            // SYS_ADMIN doesn't need an organization, but other roles do
+            if (request.getRole() != Role.SYS_ADMIN && request.getOrganizationId() == null) {
                 return ResponseEntity.badRequest().body("Organization ID is required");
             }
 

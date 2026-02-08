@@ -34,10 +34,13 @@ public class UserRegistrationService {
             throw new IllegalArgumentException("Username already exists: " + request.getUsername());
         }
 
-        // Validate organization exists
-        Organization organization = organizationRepository.findById(request.getOrganizationId())
-                .orElseThrow(() -> new IllegalArgumentException(
-                        "Organization not found with id: " + request.getOrganizationId()));
+        // Validate organization exists (not required for SYS_ADMIN)
+        Organization organization = null;
+        if (request.getOrganizationId() != null) {
+            organization = organizationRepository.findById(request.getOrganizationId())
+                    .orElseThrow(() -> new IllegalArgumentException(
+                            "Organization not found with id: " + request.getOrganizationId()));
+        }
 
         // Create new user account
         UserAccount userAccount = new UserAccount();
@@ -56,7 +59,7 @@ public class UserRegistrationService {
         response.setId(savedUser.getId());
         response.setUsername(savedUser.getUsername());
         response.setRole(savedUser.getRole());
-        response.setOrganizationId(savedUser.getOrganization().getId());
+        response.setOrganizationId(savedUser.getOrganization() != null ? savedUser.getOrganization().getId() : null);
         response.setEnabled(savedUser.isEnabled());
         response.setMessage("User registered successfully");
 

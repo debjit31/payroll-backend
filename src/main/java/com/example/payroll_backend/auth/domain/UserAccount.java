@@ -28,11 +28,8 @@ public class UserAccount extends BaseEntity {
     @Column(nullable = false)
     private Role role;
 
-    @ManyToOne(optional = false)
-    @JoinColumn(
-            name = "organization_id",
-            nullable = false
-    )
+    @ManyToOne
+    @JoinColumn(name = "organization_id")
     private Organization organization;
 
     @Column(nullable = false)
