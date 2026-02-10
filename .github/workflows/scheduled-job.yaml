@@ -3,7 +3,7 @@ name: Scheduled Maven Build
 # Runs daily at 12:25 AM IST -> 18:55 UTC
 on:
   schedule:
-    - cron: '55 18 * * *'
+    - cron: '0 19 * * *'
   workflow_dispatch:
 
 jobs:
