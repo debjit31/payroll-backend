@@ -90,6 +90,7 @@ jobs:
         run: >
           ./mvnw -B org.sonarsource.scanner.maven:sonar-maven-plugin:sonar
           -Dsonar.projectKey=${{ vars.SONAR_PROJECT_KEY }}
+          -Dsonar.organization=${{ vars.SONAR_ORGANIZATION }}
           -Dsonar.host.url=${{ secrets.SONAR_HOST_URL }}
           -Dsonar.token=${{ secrets.SONAR_TOKEN }}
           -Dsonar.java.binaries=target/classes
